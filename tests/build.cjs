@@ -40,6 +40,20 @@ try {
   assert.deepEqual(fs.readFileSync(packagePath), first, 'rejected source cannot overwrite the last package');
   git('restore', 'theme.css');
 
+  const ignoredSource = JSON.parse(fs.readFileSync(path.join(fixture, 'theme.json')));
+  fs.mkdirSync(path.join(fixture, 'dist/inputs'), {recursive: true});
+  fs.copyFileSync(path.join(fixture, 'assets/wallpaper.png'), path.join(fixture, 'dist/inputs/wallpaper.png'));
+  ignoredSource.assets[0].path = 'dist/inputs/wallpaper.png';
+  fs.writeFileSync(path.join(fixture, 'theme.json'), JSON.stringify(ignoredSource));
+  commit();
+  assert.equal(git('status', '--porcelain'), '', 'ignored input does not dirty the source tree');
+  result = build();
+  assert.notEqual(result.status, 0, 'an ignored asset absent from the source commit must be rejected');
+  assert.match(result.stderr, /Input must match committed source/);
+  assert.deepEqual(fs.readFileSync(packagePath), first, 'uncommitted input cannot overwrite the last package');
+  git('restore', '--source', 'HEAD~1', 'theme.json');
+  commit();
+
   const source = JSON.parse(fs.readFileSync(path.join(fixture, 'theme.json')));
   source.assets[0].path = '../outside.png';
   fs.writeFileSync(path.join(fixture, 'theme.json'), JSON.stringify(source));
@@ -59,7 +73,7 @@ try {
   result = build(fixture);
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /Runtime must descend from/);
-  console.log('Passed: deterministic verified build, committed provenance, dirty-source preservation, path/symlink rejection, runtime ancestry.');
+  console.log('Passed: deterministic verified build, committed provenance, ignored-input rejection, dirty-source preservation, path/symlink rejection, runtime ancestry.');
 } finally {
   fs.rmSync(fixture, {recursive: true, force: true});
 }
