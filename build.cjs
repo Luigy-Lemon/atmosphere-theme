@@ -39,6 +39,7 @@ async function main() {
   const stage = fs.mkdtempSync(path.join(root, '.dist-build-'));
   const output = path.join(root, 'dist');
   const previous = path.join(stage, 'previous');
+  let published = false;
   try {
     for (const file of files.concat([{path: 'cytv-theme.json', data: descriptor}, {path: 'atmosphere.theme.json', data: JSON.stringify(envelope)}])) {
       const target = path.join(stage, 'package', file.path);
@@ -51,9 +52,12 @@ async function main() {
     }
     try { fs.renameSync(path.join(stage, 'package'), output); }
     catch (error) { if (fs.existsSync(previous)) fs.renameSync(previous, output); throw error; }
+    published = true;
     console.log('Built Atmosphere ' + result.manifest.themeVersion + ' from ' + commit + ' into dist/');
   } finally {
-    fs.rmSync(stage, {recursive: true, force: true});
+    // Preserve the previous package if even the recovery rename fails.
+    if (published || !fs.existsSync(previous)) fs.rmSync(stage, {recursive: true, force: true});
+    else console.error('Previous distribution retained at ' + previous);
   }
 }
 main().catch(error => {console.error(error.message); process.exitCode = 1;});
