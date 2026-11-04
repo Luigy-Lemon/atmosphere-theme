@@ -16,7 +16,7 @@ From this repository, after committing your edits:
 npm run build -- --runtime ../cleanyourtv-webos
 ```
 
-The build checks runtime Git ancestry, rejects uncommitted source changes, rejects escaping paths and symlinks, and verifies the compiled package with the launcher's own theme verifier. The descriptor records the actual source commit. Rebuilding the same source with the same runtime produces identical bytes. Use a trusted runtime: the build executes its compiler on this computer.
+The build checks runtime Git ancestry, rejects uncommitted source changes, requires every consumed input to match the actual source commit, rejects escaping paths and symlinks, and verifies the compiled package with the launcher's own theme verifier. Ignored or untracked assets cannot enter the package. Rebuilding the same source with the same runtime produces identical bytes. Use a trusted runtime: the build executes its compiler on this computer.
 
 Generated `dist/` is ignored by Git. It contains:
 
@@ -39,6 +39,6 @@ Request community inclusion through the upstream [theme suggestion form](https:/
 CYTV_RUNTIME=../cleanyourtv-webos npm test
 ```
 
-The self-check uses an isolated copy of the committed source to test deterministic output, package verification, committed provenance, dirty-source rejection and path/symlink rejection. It never contacts a TV. The preview uses example apps and simulated TV functions; it does not establish compatibility of every device or firmware.
+The self-check uses an isolated copy of the committed source to test deterministic output, package verification, committed provenance, ignored-input and dirty-source rejection, and path/symlink rejection. It never contacts a TV. The preview uses example apps and simulated TV functions; it does not establish compatibility of every device or firmware.
 
 See [LICENSE.txt](LICENSE.txt) and [CREDITS.txt](CREDITS.txt) for styling, wallpaper and preview attribution.

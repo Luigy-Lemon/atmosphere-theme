@@ -21,14 +21,23 @@ async function main() {
   const {readLocal} = require(path.join(runtime, 'scripts/check-theme-submissions.cjs'));
   const {compileSource} = require(path.join(runtime, 'theme-api/compile.cjs'));
   const data = require(path.join(runtime, 'launcher/theme-data.js'));
-  const manifest = JSON.parse(readLocal(root, 'theme.json', 65536));
+  function readSource(name, limit) {
+    const bytes = readLocal(root, name, limit);
+    let committed;
+    try { committed = execFileSync('git', ['-C', root, 'show', commit + ':' + name], {maxBuffer: limit + 1, stdio: ['ignore', 'pipe', 'pipe']}); }
+    catch { throw Error('Input must match committed source: ' + name); }
+    if (!bytes.equals(committed)) throw Error('Input must match committed source: ' + name);
+    return bytes;
+  }
+  readSource('build.cjs', 65536);
+  const manifest = JSON.parse(readSource('theme.json', 65536));
   const result = await compileSource({
     manifest,
-    css: readLocal(root, 'theme.css', 131072).toString('utf8'),
+    css: readSource('theme.css', 131072).toString('utf8'),
     source: {repository, commit},
     minimumHomeVersion: '1.7.0',
-    assets: manifest.assets.map(asset => ({...asset, data: readLocal(root, asset.path, 2097152)})),
-    documents: [...new Set([manifest.license.textPath, manifest.license.creditsPath])].map(name => ({path: name, data: readLocal(root, name, 32768)}))
+    assets: manifest.assets.map(asset => ({...asset, data: readSource(asset.path, 2097152)})),
+    documents: [...new Set([manifest.license.textPath, manifest.license.creditsPath])].map(name => ({path: name, data: readSource(name, 32768)}))
   });
   const descriptor = Buffer.from(JSON.stringify(result.manifest) + '\n');
   const files = [{path: result.manifest.rules.path, data: Buffer.from(JSON.stringify(result.rules) + '\n')}, ...result.assets, ...result.documents];
