@@ -4,7 +4,7 @@ A quiet landscape and horizontal app dock for [Clean Your TV on LG webOS](https:
 
 ![Atmosphere browser preview with example apps](assets/preview.jpg)
 
-This is the standalone theme source. It is prepared for the prospective public repository `luigy-lemon/atmosphere-theme`; that repository and a community listing have not been published by this local build. It is compatible with Home's theme engine **1.7.0 or newer** and requires `ribbon-layout-v1` support. It is not an Android TV theme.
+This is the public standalone theme source and versioned distribution. Community catalogue inclusion is submitted separately for maintainer review. It is compatible with Home's theme engine **1.7.0 or newer** and requires `ribbon-layout-v1` support. It is not an Android TV theme.
 
 ## Build
 
@@ -25,13 +25,21 @@ Generated `dist/` is ignored by Git. It contains:
 
 The build keeps the previous output if validation fails. It does not pair with a TV, install anything, change TV state or publish files.
 
-## Install and share
+## Install version 1.0.0
 
-Use Clean Your TV's author toolkit to send a compiled local theme through **Settings → Themes → Receive from computer**, then apply it on the TV. Follow the upstream [theme guide](https://github.com/Razdva122/clean-your-tv-lg-webos/blob/main/docs/THEMES.md) for the current toolkit and transfer workflow. Select **Classic** in Themes to restore the launcher's original appearance.
+On Home, open **Settings → Themes → Add by ID**, enter this [fixed theme package link](https://raw.githubusercontent.com/luigy-lemon/atmosphere-theme/15135d75807e6e4fe595bb0975dd336ae826fdeb/releases/1.0.0/cytv-theme.json), choose **Load**, then select Atmosphere:
 
-For a public installation link, first publish the committed source in the repository named by the theme ID. Commit a verified distribution in a versioned directory and use its exact distribution commit in the raw GitHub descriptor URL. The descriptor's source commit must remain the committed source used to build it. A moving branch URL or private repository cannot be installed through the public theme catalogue.
+```text
+https://raw.githubusercontent.com/luigy-lemon/atmosphere-theme/15135d75807e6e4fe595bb0975dd336ae826fdeb/releases/1.0.0/cytv-theme.json
+```
 
-Request community inclusion through the upstream [theme suggestion form](https://github.com/Razdva122/clean-your-tv-lg-webos/issues/new?template=theme-submission.yml), supplying the public source/package URL and license/asset credits. Submission is reviewed by the maintainers; a local build does not create a listing. Share only the theme files and synthetic browser preview, excluding device profiles, app inventories, pairing material and private TV screenshots.
+Home downloads and verifies the theme data. Select **Classic** in Themes to restore the launcher's original appearance. Theme installation does not change Home routing or remote controls.
+
+[Version 1.0.0](https://github.com/luigy-lemon/atmosphere-theme/releases/tag/v1.0.0) also provides the compiled `atmosphere.theme.json` envelope for local-transfer tooling. Use the upstream [theme guide](https://github.com/Razdva122/clean-your-tv-lg-webos/blob/main/docs/THEMES.md) for **Receive from computer** and current controls.
+
+This fixed distribution was built from source commit [`9b876f1`](https://github.com/luigy-lemon/atmosphere-theme/tree/9b876f11dc75bbb8393160bfc4b5444ae3ad7cf6). The descriptor SHA-256 is `fc0909d347f09db0cb9bd55e834cacdd4be6b319ff2b67866933ceab5c38a5d1`. Its source revision and distribution revision intentionally differ: generated files were committed after the source build.
+
+Community catalogue inclusion requires maintainer review. Until inclusion, install directly using the fixed package link above. The preview uses example apps and simulated TV functions; it contains no personal TV screenshot or device configuration.
 
 ## Checks
 
