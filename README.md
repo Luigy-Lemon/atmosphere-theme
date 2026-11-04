@@ -39,7 +39,7 @@ Home downloads and verifies the theme data. Select **Classic** in Themes to rest
 
 This fixed distribution was built from source commit [`9b876f1`](https://github.com/luigy-lemon/atmosphere-theme/tree/9b876f11dc75bbb8393160bfc4b5444ae3ad7cf6). The descriptor SHA-256 is `fc0909d347f09db0cb9bd55e834cacdd4be6b319ff2b67866933ceab5c38a5d1`. Its source revision and distribution revision intentionally differ: generated files were committed after the source build.
 
-Community catalogue inclusion requires maintainer review. Until inclusion, install directly using the fixed package link above. The preview uses example apps and simulated TV functions; it contains no personal TV screenshot or device configuration.
+Community catalogue inclusion is [submitted for maintainer review](https://github.com/Razdva122/clean-your-tv-lg-webos/issues/314). Until inclusion, install directly using the fixed package link above. The preview uses example apps and simulated TV functions; it contains no personal TV screenshot or device configuration.
 
 ## Checks
 
