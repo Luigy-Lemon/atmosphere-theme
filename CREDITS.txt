@@ -1,0 +1,8 @@
+Atmosphere theme for Clean Your TV (LG webOS edition).
+
+Original wallpaper: generated for the owner's Atmosphere TV project, reused byte-for-byte from app/assets/wallpaper.png.
+Theme styling: derived from Atmosphere TV's dark blue palette and Gallery dock.
+Launcher, layout engine, controls and bundled Outfit font: supplied by Clean Your TV, https://github.com/Razdva122/clean-your-tv-lg-webos (MIT; font under its bundled OFL).
+App artwork on the TV is supplied by the installed apps. The browser preview includes Clean Your TV's reference app artwork; those trademarks and images belong to their respective owners and are not licensed by this theme's MIT license.
+
+This is a private local theme snapshot. It has not been published to the community catalogue.

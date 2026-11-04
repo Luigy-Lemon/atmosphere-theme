@@ -1,0 +1,9 @@
+{
+  "name": "atmosphere-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node --max-old-space-size=256 build.cjs",
+    "test": "node --max-old-space-size=256 tests/build.cjs"
+  }
+}

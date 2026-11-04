@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "themeApiVersion": 1,
+  "id": "github:luigy-lemon/atmosphere-tv:atmosphere",
+  "title": "Atmosphere",
+  "description": "Atmosphere's original landscape, cool white clock and quiet horizontal dock for Clean Your TV on LG webOS.",
+  "author": {"name": "Atmosphere TV", "url": "https://github.com/Luigy-Lemon/atmosphere-tv"},
+  "themeVersion": "1.0.0",
+  "layout": {
+    "preset": "scenic-grid",
+    "columns": 8,
+    "spacingScale": 1,
+    "textScale": 1,
+    "focusScale": 1.1,
+    "allowColumnOverride": false,
+    "ribbon": {
+      "left": 112,
+      "right": 112,
+      "bottom": 82,
+      "cardHeight": 144,
+      "gap": 24,
+      "skewDeg": 0,
+      "focusLift": 8,
+      "shortcuts": "header",
+      "edgeNavigation": "wrap",
+      "labels": "focused-above",
+      "showClock": true,
+      "iconScale": 0.8
+    }
+  },
+  "defaults": {"wallpaperAssetId": "landscape", "dim": 0.2, "accent": "#e2e8ee"},
+  "assets": [
+    {"id": "landscape", "path": "assets/wallpaper.png", "mediaType": "image/png", "width": 1672, "height": 941},
+    {"id": "preview", "path": "assets/preview.jpg", "mediaType": "image/jpeg", "width": 960, "height": 540}
+  ],
+  "previewAssetId": "preview",
+  "license": {"identifier": "MIT", "textPath": "LICENSE.txt", "creditsPath": "CREDITS.txt"}
+}
