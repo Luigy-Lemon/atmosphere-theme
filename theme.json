@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "themeApiVersion": 1,
-  "id": "github:luigy-lemon/atmosphere-tv:atmosphere",
+  "id": "github:luigy-lemon/atmosphere-theme:atmosphere",
   "title": "Atmosphere",
   "description": "Atmosphere's original landscape, cool white clock and quiet horizontal dock for Clean Your TV on LG webOS.",
-  "author": {"name": "Atmosphere TV", "url": "https://github.com/Luigy-Lemon/atmosphere-tv"},
+  "author": {"name": "Luigy-Lemon", "url": "https://github.com/luigy-lemon"},
   "themeVersion": "1.0.0",
   "layout": {
     "preset": "scenic-grid",

@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) 2026 Luigy-Lemon (Atmosphere theme)
 Copyright (c) 2026 webos-launcher contributors
 Copyright (c) 2026 rudra-avatar (changes in this fork)
 
