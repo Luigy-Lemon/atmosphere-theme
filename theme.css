@@ -12,3 +12,5 @@
 .ctv-input-row.is-focused, .ctv-library-row.is-focused, .ctv-library-close.is-focused { color: #07111c; background-color: #e2e8ee; }
 .ctv-library-row.is-focused .ctv-label { color: #07111c; text-shadow: 0px 0px 0px transparent; }
 .ctv-library { background-color: rgba(2,9,17,0.55); }
+
+/* Ribbon composition: weather is intentionally disabled by Home. */
